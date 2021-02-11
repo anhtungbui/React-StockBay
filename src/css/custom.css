@@ -1,1 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;1,400&display=swap');
+
+.navbar__logo {
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+.navbar__input {
+    width: 80% !important;
+}
+
+.navbar__button {
+    width: 20%;
+}
