@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import { FaSearch } from 'react-icons/fa';
+import Spinner from './components/Spinner';
 import axios from 'axios';
 
 const FINNHUB_TOKEN = process.env.REACT_APP_FINNHUB_TOKEN;
@@ -24,7 +25,7 @@ function App() {
                     },
                 }
             );
-            // console.log(data.result);
+            console.log(data.result);
             setResults(data.result);
         };
 
@@ -43,8 +44,10 @@ function App() {
         <>
             <header>
                 <Navbar className="shadow navbar-light bg-white" expand="lg">
-                    <div className="col-2">
-                        <div className="navbar__logo">StockBay</div>
+                    <div className="col-2 text-center">
+                        <div className="navbar__logo">
+                            <a href="index.html">StockBay</a>
+                        </div>
                     </div>
                     <div className="col-5">
                         <form
@@ -70,6 +73,30 @@ function App() {
                     </div>
                 </Navbar>
             </header>
+            <main className="container">
+                {query.length > 0 && results.length === 0 ? <Spinner /> : null}
+
+                <ul className="list-group pt-3">
+                    {results.map((result) => {
+                        return (
+                            <li
+                                className="list-group-item list-group-item-action"
+                                key={result.symbol}
+                            >
+                                <div className="row">
+                                    <div className="col-2 font-weight-bolder">
+                                        {result.symbol}
+                                    </div>
+                                    <div className="col-7">
+                                        {result.description}
+                                    </div>
+                                    <div className="col-3">{result.type}</div>
+                                </div>
+                            </li>
+                        );
+                    })}
+                </ul>
+            </main>
         </>
     );
 }

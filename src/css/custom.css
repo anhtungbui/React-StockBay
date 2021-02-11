@@ -5,10 +5,19 @@
     font-weight: bolder;
 }
 
+.navbar__logo a:hover {
+    color: #0061f2;
+    text-decoration: none;
+}
+
 .navbar__input {
     width: 80% !important;
 }
 
 .navbar__button {
     width: 20%;
+}
+
+.spinner {
+    height: 90vh;
 }
