@@ -1,0 +1,37 @@
+import React from 'react';
+import Navbar from 'react-bootstrap/Navbar';
+import { FaSearch } from 'react-icons/fa';
+
+export default function NavBar({ query, handleFormSubmit, handleInputChange }) {
+    return (
+        <Navbar className="shadow navbar-light bg-white" expand="lg">
+            <div className="col-2 text-center">
+                <div className="navbar__logo">
+                    <a href="index.html">StockBay</a>
+                </div>
+            </div>
+            <div className="col-5">
+                <form
+                    className="form-inline"
+                    onSubmit={(e) => handleFormSubmit(e)}
+                >
+                    <div className="form-group w-100">
+                        <input
+                            type="search"
+                            className="form-control navbar__input"
+                            placeholder="Search symbol or company..."
+                            value={query}
+                            onChange={(e) => handleInputChange(e)}
+                        ></input>
+                        <button
+                            type="submit"
+                            className="btn btn-primary navbar__button"
+                        >
+                            <FaSearch size="17px" />
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </Navbar>
+    );
+}
