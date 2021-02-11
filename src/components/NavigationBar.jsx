@@ -1,13 +1,17 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import { FaSearch } from 'react-icons/fa';
+import Logo from '../assets/images/stockbay_logo.png';
 
 export default function NavBar({ query, handleFormSubmit, handleInputChange }) {
     return (
         <Navbar className="shadow navbar-light bg-white" expand="lg">
             <div className="col-2 text-center">
                 <div className="navbar__logo">
-                    <a href="index.html">StockBay</a>
+                    <img className="mr-2 " src={Logo} alt="stockbay logo" />
+                    <a className="" href="index.html">
+                        StockBay
+                    </a>
                 </div>
             </div>
             <div className="col-5">
