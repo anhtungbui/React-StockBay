@@ -5,6 +5,10 @@
     font-weight: bolder;
 }
 
+.navbar__logo img {
+    width: 25px;
+}
+
 .navbar__logo a:hover {
     color: #0061f2;
     text-decoration: none;

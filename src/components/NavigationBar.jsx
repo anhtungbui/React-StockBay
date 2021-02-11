@@ -6,7 +6,7 @@ import Logo from '../assets/images/stockbay_logo.png';
 export default function NavBar({ query, handleFormSubmit, handleInputChange }) {
     return (
         <Navbar className="shadow navbar-light bg-white" expand="lg">
-            <div className="col-2 text-center">
+            <div className="col-2 offset-md-2 text-center">
                 <div className="navbar__logo">
                     <img className="mr-2 " src={Logo} alt="stockbay logo" />
                     <a className="" href="index.html">
@@ -14,7 +14,7 @@ export default function NavBar({ query, handleFormSubmit, handleInputChange }) {
                     </a>
                 </div>
             </div>
-            <div className="col-5">
+            <div className="col-6">
                 <form
                     className="form-inline"
                     onSubmit={(e) => handleFormSubmit(e)}
