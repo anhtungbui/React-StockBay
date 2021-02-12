@@ -25,3 +25,8 @@
 .spinner {
     height: 90vh;
 }
+
+.profile__logo {
+    width: 45px;
+    float: right;
+}

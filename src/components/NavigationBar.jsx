@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
 import { FaSearch } from 'react-icons/fa';
 import Logo from '../assets/images/stockbay_logo.png';
@@ -6,12 +7,10 @@ import Logo from '../assets/images/stockbay_logo.png';
 export default function NavBar({ query, handleFormSubmit, handleInputChange }) {
     return (
         <Navbar className="shadow navbar-light bg-white" expand="lg">
-            <div className="col-2 offset-md-2 text-center">
+            <div className="col-2 offset-md-2">
                 <div className="navbar__logo">
-                    <img className="mr-2 " src={Logo} alt="stockbay logo" />
-                    <a className="" href="index.html">
-                        StockBay
-                    </a>
+                    <img className="mr-2" src={Logo} alt="stockbay logo" />
+                    <Link to="/">StockBay</Link>
                 </div>
             </div>
             <div className="col-6">
