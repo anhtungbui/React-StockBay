@@ -24,12 +24,15 @@ function App() {
     useEffect(() => {
         const getNewsArticles = async () => {
             try {
-                const { data } = await axios.get('/api/v1/news?', {
-                    params: {
-                        category: 'general',
-                        token: FINNHUB_TOKEN,
-                    },
-                });
+                const { data } = await axios.get(
+                    'https://finnhub.io/api/v1/news?',
+                    {
+                        params: {
+                            category: 'general',
+                            token: FINNHUB_TOKEN,
+                        },
+                    }
+                );
                 console.log(data);
                 setNewsArticles(data);
             } catch (error) {
@@ -42,12 +45,15 @@ function App() {
 
     useEffect(() => {
         const search = async () => {
-            const { data } = await axios.get('/api/v1/search', {
-                params: {
-                    q: query,
-                    token: FINNHUB_TOKEN,
-                },
-            });
+            const { data } = await axios.get(
+                'https://finnhub.io/api/v1/search',
+                {
+                    params: {
+                        q: query,
+                        token: FINNHUB_TOKEN,
+                    },
+                }
+            );
             console.log(data.result);
             setResults(data.result);
         };
