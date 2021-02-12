@@ -5,15 +5,16 @@ import ProfileList from './ProfileList';
 const FINNHUB_TOKEN = process.env.REACT_APP_FINNHUB_TOKEN;
 
 export default function StockDetail({ match }) {
-    // console.log(match.params.symbol);
     const symbol = match.params.symbol;
     const [profile, setProfile] = useState([]);
+    const [news, setNews] = useState([]);
 
     useEffect(() => {
-        getProfileData();
+        // getCompanyProfile();
+        // getCompanyNews();
     }, []);
 
-    const getProfileData = async () => {
+    const getCompanyProfile = async () => {
         const { data } = await axios.get(
             'https://finnhub.io/api/v1/stock/profile2?',
             {
@@ -25,6 +26,22 @@ export default function StockDetail({ match }) {
         );
         console.log(data);
         setProfile(data);
+    };
+
+    const getCompanyNews = async () => {
+        const { data } = await axios.get(
+            'https://finnhub.io/api/v1/company-news?',
+            {
+                params: {
+                    symbol: symbol,
+                    from: '2021-01-10',
+                    to: '2021-01-11',
+                    token: FINNHUB_TOKEN,
+                },
+            }
+        );
+        console.log(data);
+        // setNews(data);
     };
 
     return (

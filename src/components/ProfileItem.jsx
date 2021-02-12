@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function ProfileItem({ title, body, phone, url }) {
     // Remove .0 from the API string and add + symbol in front
-    body = phone ? '+' + body.slice(0, -2) : body;
+    // body = phone ? '+' + body.slice(0, -2) : body;
 
     body = url ? <a href={body}>{body}</a> : body;
 
