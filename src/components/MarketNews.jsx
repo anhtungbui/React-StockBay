@@ -3,8 +3,8 @@ import NewsArticle from './NewsArticle';
 
 import Spinner from './Spinner';
 
-export default function MarketNews({ newsArticles }) {
-    if (newsArticles.length === 0) {
+export default function MarketNews({ newsArticles, loading }) {
+    if (loading) {
         return <Spinner />;
     }
 

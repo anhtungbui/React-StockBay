@@ -8,10 +8,13 @@ import StockDetail from './components/StockDetail';
 
 const FINNHUB_TOKEN = process.env.REACT_APP_FINNHUB_TOKEN;
 
+// TODO: how to handle error with axios async await
+
 function App() {
     const [newsArticles, setNewsArticles] = useState([]);
     const [query, setQuery] = useState('');
     const [results, setResults] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
@@ -23,21 +26,19 @@ function App() {
 
     useEffect(() => {
         const getNewsArticles = async () => {
-            try {
-                const { data } = await axios.get(
-                    'https://finnhub.io/api/v1/news?',
-                    {
-                        params: {
-                            category: 'general',
-                            token: FINNHUB_TOKEN,
-                        },
-                    }
-                );
-                console.log(data);
-                setNewsArticles(data);
-            } catch (error) {
-                console.error(error);
-            }
+            setLoading(true);
+            const { data } = await axios.get(
+                'https://finnhub.io/api/v1/news?',
+                {
+                    params: {
+                        category: 'general',
+                        token: FINNHUB_TOKEN,
+                    },
+                }
+            );
+            // console.log(data);
+            setNewsArticles(data.slice(0, 10));
+            setLoading(false);
         };
 
         getNewsArticles();
@@ -45,6 +46,7 @@ function App() {
 
     useEffect(() => {
         const search = async () => {
+            setLoading(true);
             const { data } = await axios.get(
                 'https://finnhub.io/api/v1/search',
                 {
@@ -56,6 +58,7 @@ function App() {
             );
             console.log(data.result);
             setResults(data.result);
+            setLoading(false);
         };
 
         const timeoutId = setTimeout(() => {
@@ -79,10 +82,17 @@ function App() {
                 />
             </header>
             <main className="container">
-                <Main query={query} results={results} />
                 <Switch>
                     <Route path="/" exact>
-                        <MarketNews newsArticles={newsArticles} />
+                        <Main
+                            query={query}
+                            results={results}
+                            loading={loading}
+                        />
+                        <MarketNews
+                            newsArticles={newsArticles}
+                            loading={loading}
+                        />
                     </Route>
                     <Route path="/:symbol" component={StockDetail} />
                 </Switch>

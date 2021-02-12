@@ -4,13 +4,15 @@ import Navbar from 'react-bootstrap/Navbar';
 import { FaSearch } from 'react-icons/fa';
 import Logo from '../assets/images/stockbay_logo.png';
 
+// TODO: how to handle reset form to trigger rerender
 export default function NavBar({ query, handleFormSubmit, handleInputChange }) {
     return (
         <Navbar className="shadow navbar-light bg-white" expand="lg">
             <div className="col-2 offset-md-2">
                 <div className="navbar__logo">
                     <img className="mr-2" src={Logo} alt="stockbay logo" />
-                    <Link to="/">StockBay</Link>
+                    {/* <Link to="/">StockBay</Link> */}
+                    <a href="/">StockBay</a>
                 </div>
             </div>
             <div className="col-6">
