@@ -5,6 +5,7 @@ import NavigationBar from './components/NavigationBar';
 import Main from './components/Main';
 import MarketNews from './components/MarketNews';
 import StockDetail from './components/StockDetail';
+import Footer from './components/Footer';
 
 const FINNHUB_TOKEN = process.env.REACT_APP_FINNHUB_TOKEN;
 
@@ -97,6 +98,9 @@ function App() {
                     <Route path="/:symbol" component={StockDetail} />
                 </Switch>
             </main>
+            <footer>
+                <Footer />
+            </footer>
         </Router>
     );
 }
