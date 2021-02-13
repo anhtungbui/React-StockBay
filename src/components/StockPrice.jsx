@@ -54,7 +54,7 @@ export default function StockPrice({
 
     return (
         <div className="card">
-            <div className="card-header">Stock Price History</div>
+            <div className="card-header">Stock Price Overview</div>
             <div className="card-body">
                 <div>
                     <span className="h1 font-weight-bolder">

@@ -1,16 +1,18 @@
 # StockBay
 
-An information hub for stock traders
+A modern information hub for stock traders
 
 ## Tech stack
 
-HTML, CSS, Bootstrap, ReactJS
+ReactJS, JavaScript, REST APIs, Bootstrap, CSS, HTML
 
 ## Features
 
 -   Symbol or company lookup
 -   Company profile
--   Company news
+-   Stock price overview
+-   Stock price history chart
+-   Latest financial and business news
 
 ## Installation
 
