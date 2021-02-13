@@ -17,8 +17,11 @@ function App() {
     const [results, setResults] = useState([]);
     const [loading, setLoading] = useState(false);
 
-    const handleFormSubmit = (e) => {
+    const handleFormSubmit = (e, query) => {
         e.preventDefault();
+        // console.log(query);
+        setQuery(query);
+        // console.log(e.target[0].value);
     };
 
     const handleInputChange = (e) => {

@@ -15,11 +15,11 @@
 }
 
 .navbar__input {
-    width: 80% !important;
+    width: 75% !important;
 }
 
 .navbar__button {
-    width: 20%;
+    width: 15%;
 }
 
 .spinner {
@@ -29,4 +29,9 @@
 .profile__logo {
     width: 45px;
     float: right;
+}
+
+.react-icons {
+    /* padding-top: 1px; */
+    vertical-align: text-top;
 }
