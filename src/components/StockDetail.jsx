@@ -4,17 +4,23 @@ import ProfileList from './ProfileList';
 
 const FINNHUB_TOKEN = process.env.REACT_APP_FINNHUB_TOKEN;
 
+const prepareChartData = (data) => {
+    console.log(data);
+};
+
 export default function StockDetail({ match }) {
     const symbol = match.params.symbol;
     const [profile, setProfile] = useState([]);
-    const [news, setNews] = useState([]);
+    const [priceData, setPriceData] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        // getCompanyProfile();
-        // getCompanyNews();
+        getCompanyProfile();
+        getStockPrice();
     }, []);
 
     const getCompanyProfile = async () => {
+        setLoading(true);
         const { data } = await axios.get(
             'https://finnhub.io/api/v1/stock/profile2?',
             {
@@ -24,34 +30,38 @@ export default function StockDetail({ match }) {
                 },
             }
         );
-        console.log(data);
+        // console.log(data);
         setProfile(data);
+        setLoading(false);
     };
 
-    const getCompanyNews = async () => {
+    const getStockPrice = async () => {
+        setLoading(true);
         const { data } = await axios.get(
-            'https://finnhub.io/api/v1/company-news?',
+            'https://finnhub.io/api/v1/stock/candle?',
             {
                 params: {
                     symbol: symbol,
-                    from: '2021-01-10',
-                    to: '2021-01-11',
+                    resolution: 'D',
+                    from: Date.parse('2021-02-01T00:00:00') / 1000,
+                    to: new Date().getTime(),
                     token: FINNHUB_TOKEN,
                 },
             }
         );
-        console.log(data);
+        // console.log(data);
+        prepareChartData(data);
         // setNews(data);
     };
 
     return (
         <div className="row mt-3">
             <div className="col-4">
-                <ProfileList profile={profile} />
+                <ProfileList profile={profile} loading={loading} />
             </div>
             <div className="col-8">
                 <div className="card">
-                    <div className="card-header">Company News</div>
+                    <div className="card-header">Stock Price</div>
                     <div className="card-body"></div>
                 </div>
             </div>

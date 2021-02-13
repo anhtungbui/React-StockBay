@@ -1,9 +1,14 @@
 import React from 'react';
 import ProfileItem from './ProfileItem';
+import Spinner from './Spinner';
 
 // FIXME: TypeError: Currency code is required with currency style.
 
-export default function ProfileList({ profile }) {
+export default function ProfileList({ profile, loading }) {
+    if (loading) {
+        return <Spinner />;
+    }
+
     return (
         <div className="card">
             <div className="card-header">Company Profile</div>
