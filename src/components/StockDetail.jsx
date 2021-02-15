@@ -6,7 +6,7 @@ import StockPrice from './StockPrice';
 const FINNHUB_TOKEN = process.env.REACT_APP_FINNHUB_TOKEN;
 
 export default function StockDetail({ match }) {
-    const symbol = match.params.symbol;
+    let symbol = match.params.symbol;
     const [profile, setProfile] = useState([]);
     const [profileLoading, setprofileLoading] = useState(false);
     const [priceLoading, setPriceLoading] = useState(false);
@@ -19,6 +19,8 @@ export default function StockDetail({ match }) {
         getCompanyProfile();
         getStockPrice();
     }, []);
+
+    symbol = symbol.replace(/\.[a-z]+/gi, '');
 
     const getCompanyProfile = async () => {
         setprofileLoading(true);
