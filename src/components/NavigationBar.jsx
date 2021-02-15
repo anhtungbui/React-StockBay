@@ -28,16 +28,23 @@ export default function NavBar({ query, handleFormSubmit, handleInputChange }) {
                             placeholder="Search symbol or company..."
                             value={query}
                             onChange={(e) => handleInputChange(e)}
-                        ></input>
-                        <button
+                        />
+                        {/* <button
                             type="submit"
                             className="btn btn-primary navbar__button"
                         >
                             <FaSearch size="17px" />
-                        </button>
+                        </button> */}
+                        <Link
+                            to="/search"
+                            className="btn btn-primary navbar__button"
+                        >
+                            <FaSearch size="17px" />
+                        </Link>
                     </div>
                 </form>
             </div>
+            <div>{/* <SearchDropdown /> */}</div>
         </Navbar>
     );
 }

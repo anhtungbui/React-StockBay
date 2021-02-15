@@ -98,6 +98,13 @@ function App() {
                             loading={loading}
                         />
                     </Route>
+                    <Route path="/search">
+                        <Main
+                            query={query}
+                            results={results}
+                            loading={loading}
+                        />
+                    </Route>
                     <Route path="/:symbol" component={StockDetail} />
                 </Switch>
             </main>
